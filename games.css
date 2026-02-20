@@ -1,0 +1,546 @@
+/* 🎮 Zona de Juegos (Phase 5 - UX Refined) */
+.zona-juegos {
+    margin-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+.hub-juegos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.hub-juegos.oculto {
+    display: none;
+}
+
+.tarjeta-juego {
+    background: var(--card-bg);
+    border: 1px solid var(--glass-border);
+    padding: 2.5rem 2rem;
+    border-radius: var(--border-radius-lg);
+    text-align: center;
+    transition: var(--transition);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.tarjeta-juego::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(79, 70, 229, 0.05), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+}
+
+.tarjeta-juego:hover::after {
+    transform: translateX(100%);
+}
+
+.tarjeta-juego:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent-primary);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.juego-icon {
+    font-size: 4rem;
+    background: rgba(79, 70, 229, 0.1);
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.tarjeta-juego:hover .juego-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.tarjeta-juego h3 {
+    font-size: 1.5rem;
+    margin: 0;
+    color: var(--header-text);
+}
+
+.tarjeta-juego p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Pantalla de juego activa */
+.pantalla-juego {
+    background: var(--card-bg);
+    border-radius: var(--border-radius-lg);
+    padding: 2rem;
+    margin-top: 2rem;
+    border: 1px solid var(--accent-primary);
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    animation: slideUp 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    box-shadow: var(--shadow-xl);
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.pantalla-juego.oculto {
+    display: none;
+}
+
+.cabecera-juego {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.boton-volver-hub {
+    background: none;
+    border: none;
+    color: var(--text-main);
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: var(--transition);
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius-md);
+}
+
+.boton-volver-hub:hover {
+    background: rgba(100, 116, 139, 0.05);
+    color: var(--accent-primary);
+}
+
+.stats-container {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.marcador-puntos,
+.combo-badge {
+    font-size: 1rem;
+    font-weight: 800;
+    padding: 0.5rem 1.25rem;
+    border-radius: 50px;
+    backdrop-filter: blur(4px);
+}
+
+.marcador-puntos {
+    color: var(--accent-primary);
+    background: rgba(79, 70, 229, 0.1);
+    border: 1px solid rgba(79, 70, 229, 0.2);
+}
+
+.combo-badge {
+    color: #f59e0b;
+    background: rgba(245, 158, 11, 0.1);
+    border: 1px solid rgba(245, 158, 11, 0.2);
+    display: none;
+}
+
+.combo-badge.visible {
+    display: block;
+    animation: bounce 0.5s infinite;
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+/* 🔡 Ahorcado UI */
+.ahorcado-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+/* Hangman Visual Progress */
+.hangman-visual {
+    width: 100%;
+    max-width: 400px;
+    height: 10px;
+    background: var(--glass-border);
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    margin: 1rem 0;
+}
+
+.hangman-bar {
+    height: 100%;
+    background: #ef4444;
+    width: 0%;
+    transition: width 0.3s ease, background 0.3s ease;
+}
+
+.palabra-display {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 2.5rem;
+    font-family: var(--font-header);
+    font-weight: 800;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.letra-slot {
+    border-bottom: 4px solid var(--glass-border);
+    min-width: 35px;
+    text-align: center;
+    min-height: 50px;
+    color: var(--header-text);
+    transition: var(--transition);
+}
+
+.letra-slot.llena {
+    border-bottom-color: var(--accent-primary);
+    animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popIn {
+    from {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.teclado-juego {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    max-width: 600px;
+    margin-top: 1rem;
+}
+
+.tecla-btn {
+    width: 45px;
+    height: 45px;
+    border: 1px solid var(--glass-border);
+    background: var(--card-bg);
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: var(--text-main);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.tecla-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    border-color: var(--accent-primary);
+    background: var(--glass-bg);
+}
+
+.tecla-btn:active:not(:disabled) {
+    transform: scale(0.95);
+}
+
+.tecla-btn:disabled {
+    opacity: 0.2;
+    cursor: not-allowed;
+}
+
+.tecla-btn.correcta {
+    background: #10b981;
+    color: white;
+    border-color: #059669;
+}
+
+.tecla-btn.incorrecta {
+    background: #ef4444;
+    color: white;
+    border-color: #dc2626;
+    animation: shake 0.4s ease;
+}
+
+/* 🧠 Trivia UI */
+.trivia-container {
+    max-width: 700px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.pregunta-card {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.pregunta-texto {
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    color: var(--header-text);
+}
+
+.opciones-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+}
+
+.opcion-btn {
+    padding: 1.25rem;
+    background: var(--card-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--border-radius-md);
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: var(--text-main);
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    overflow: hidden;
+}
+
+.opcion-btn:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent-primary);
+    box-shadow: var(--shadow-md);
+}
+
+.opcion-btn.correcta {
+    background: #10b981;
+    color: white;
+    border-color: #059669;
+    animation: bounce 0.5s ease;
+}
+
+.opcion-btn.incorrecta {
+    background: #ef4444;
+    color: white;
+    border-color: #dc2626;
+    animation: shake 0.4s ease;
+}
+
+.timer-container {
+    width: 100%;
+    height: 8px;
+    background: rgba(100, 116, 139, 0.1);
+    border-radius: 10px;
+    margin-top: 2.5rem;
+    overflow: hidden;
+}
+
+.timer-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-primary), #6366f1);
+    width: 100%;
+    box-shadow: 0 0 10px rgba(79, 70, 229, 0.3);
+}
+
+.timer-bar.critical {
+    background: #ef4444;
+}
+
+/* Instructions Screen */
+.instrucciones-juego {
+    text-align: center;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.instrucciones-juego h2 {
+    color: var(--header-text);
+    font-size: 2rem;
+}
+
+.instrucciones-juego p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    max-width: 500px;
+}
+
+/* End Screen */
+.mensaje-final {
+    text-align: center;
+    padding: 3rem 2rem;
+    animation: zoomIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.mensaje-final h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--header-text), var(--accent-primary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.puntos-finales {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent-primary);
+    margin: 1.5rem 0;
+}
+
+/* Utility Animations */
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-8px);
+    }
+
+    75% {
+        transform: translateX(8px);
+    }
+}
+
+@media (max-width: 768px) {
+    .zona-juegos {
+        margin-top: 2rem;
+        padding-bottom: 2rem;
+    }
+
+    .hub-juegos {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .tarjeta-juego {
+        padding: 1.5rem;
+    }
+
+    /* Pantalla de juego en móvil */
+    .pantalla-juego {
+        padding: 1rem;
+        min-height: auto;
+    }
+
+    .cabecera-juego {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .stats-container {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Ahorcado móvil */
+    .palabra-display {
+        font-size: 1.5rem;
+        gap: 0.25rem;
+    }
+
+    .letra-slot {
+        min-width: 25px;
+        min-height: 40px;
+    }
+
+    .teclado-juego {
+        gap: 4px;
+    }
+
+    .tecla-btn {
+        width: 35px;
+        height: 40px;
+        font-size: 0.85rem;
+        border-radius: 6px;
+    }
+
+    /* Trivia móvil */
+    .pregunta-texto {
+        font-size: 1.3rem;
+    }
+
+    .opciones-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+
+    .opcion-btn {
+        padding: 1rem;
+        font-size: 1rem;
+    }
+
+    /* Pantalla final móvil */
+    .mensaje-final h2 {
+        font-size: 2rem;
+    }
+
+    .puntos-finales {
+        font-size: 1.25rem;
+    }
+}
+
+/* Soporte para pantallas extra pequeñas */
+@media (max-width: 380px) {
+    .tecla-btn {
+        width: 30px;
+        height: 38px;
+        font-size: 0.8rem;
+    }
+
+    .palabra-display {
+        font-size: 1.2rem;
+    }
+}

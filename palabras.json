@@ -517,7 +517,8 @@
     "definicion": "Conjunto de prácticas y tecnologías para proteger sistemas y datos digitales.",
     "ejemplo": "Usar contraseñas seguras es parte de la seguridad informática."
   },
-  { "palabra": "Resistencia",
+  {
+    "palabra": "Resistencia",
     "traduccion": "resistor",
     "categoria": "arquitectura",
     "definicion": "Componente que limita el flujo de corriente eléctrica.",
@@ -690,7 +691,7 @@
     "categoria": "programacion",
     "definicion": "Programa que traduce código fuente a lenguaje máquina.",
     "ejemplo": "El compilador convierte el código C++ en ejecutable."
-  } ,
+  },
   {
     "palabra": "Depuración",
     "traduccion": "debugging",
@@ -1131,7 +1132,7 @@
     "categoria": "programacion",
     "definicion": "Lenguaje de programación de alto rendimiento para sistemas y videojuegos.",
     "ejemplo": "C++ se usa para desarrollar motores gráficos en videojuegos."
-    },
+  },
   {
     "palabra": "Maquina",
     "categoria": "informatica",
@@ -1856,14 +1857,14 @@
   {
     "palabra": "Diccionario",
     "traduccion": "dictionary",
-    "categoria":"programacion",
+    "categoria": "programacion",
     "definicion": "Estructura de datos que almacena pares clave-valor, similar a un objeto JSON.",
     "ejemplo": "usuario = { 'nombre': 'Ana', 'edad': 25 }"
   },
   {
     "palabra": "Lista",
     "traduccion": "list",
-    "categoria":"programacion",
+    "categoria": "programacion",
     "definicion": "Colección ordenada y mutable de elementos en Python.",
     "ejemplo": "numeros = [1, 2, 3, 4]"
   },
@@ -1877,21 +1878,21 @@
   {
     "palabra": "Módulo",
     "traduccion": "module",
-    "categoria":"programacion",
+    "categoria": "programacion",
     "definicion": "Archivo de Python que contiene funciones, clases o variables que pueden importarse en otros programas.",
     "ejemplo": "import math"
   },
   {
     "palabra": "Paquete",
     "traduccion": "package",
-    "categoria":"programacion",
+    "categoria": "programacion",
     "definicion": "Colección de módulos organizados en carpetas con un archivo __init__.py.",
     "ejemplo": "import numpy"
   },
   {
     "palabra": "Excepción",
     "traduccion": "exception",
-    "categoria":"programacion",
+    "categoria": "programacion",
     "definicion": "Error detectado durante la ejecución que puede manejarse con try/except.",
     "ejemplo": "try: x = 1/0 except ZeroDivisionError: print('Error')"
   },
@@ -1915,5 +1916,152 @@
     "definicion": "Elemento que representa una idea, emoción o concepto más allá de su forma.",
     "ejemplo": "El verde inglés es símbolo de lo institucional en nuestro glosario.",
     "categoria": "Poética técnica"
+  },
+  {
+    "palabra": "Cloud Computing",
+    "traduccion": "Cloud Computing",
+    "categoria": "informatica",
+    "definicion": "Uso de servidores remotos para almacenar, gestionar y procesar datos a través de internet.",
+    "ejemplo": "Usamos Cloud Computing para escalar nuestra aplicación sin servidores físicos."
+  },
+  {
+    "palabra": "Kubernetes",
+    "traduccion": "Kubernetes",
+    "categoria": "informatica",
+    "definicion": "Sistema de código abierto para automatizar la implementación, el escalado y la gestión de aplicaciones en contenedores.",
+    "ejemplo": "El equipo usa Kubernetes para orquestar los microservicios de la plataforma."
+  },
+  {
+    "palabra": "Docker",
+    "traduccion": "Docker",
+    "categoria": "informatica",
+    "definicion": "Herramienta que permite empacar, distribuir y ejecutar aplicaciones en contenedores aislados.",
+    "ejemplo": "Docker asegura que la aplicación se ejecute igual en cualquier entorno."
+  },
+  {
+    "palabra": "Microservicios",
+    "traduccion": "Microservices",
+    "categoria": "programacion",
+    "definicion": "Arquitectura de software que construye una aplicación como un conjunto de pequeños servicios independientes.",
+    "ejemplo": "Cambiamos a una arquitectura de microservicios para facilitar el despliegue continuo."
+  },
+  {
+    "palabra": "Blockchain",
+    "traduccion": "Blockchain",
+    "categoria": "informatica",
+    "definicion": "Libro de contabilidad digital descentralizado y seguro que registra transacciones en múltiples computadoras.",
+    "ejemplo": "La tecnología blockchain garantiza la inmutabilidad de los registros de transacciones."
+  },
+  {
+    "palabra": "JWT",
+    "traduccion": "JSON Web Token",
+    "categoria": "programacion",
+    "definicion": "Estándar abierto para transmitir información de forma segura entre partes como un objeto JSON.",
+    "ejemplo": "Usamos JWT para autenticar a los usuarios en nuestra API REST."
+  },
+  {
+    "palabra": "API REST",
+    "traduccion": "REST API",
+    "categoria": "programacion",
+    "definicion": "Interfaz de programación de aplicaciones que utiliza peticiones HTTP para acceder y manipular datos.",
+    "ejemplo": "La API REST permite que la app móvil se comunique con el servidor central."
+  },
+  {
+    "palabra": "WebSockets",
+    "traduccion": "WebSockets",
+    "categoria": "programacion",
+    "definicion": "Protocolo de comunicación que permite el intercambio de datos bidireccional y en tiempo real.",
+    "ejemplo": "Usamos WebSockets para implementar el sistema de chat en vivo."
+  },
+  {
+    "palabra": "CI/CD",
+    "traduccion": "Continuous Integration / Continuous Deployment",
+    "categoria": "programacion",
+    "definicion": "Práctica de automatizar la integración de cambios de código y su despliegue en producción.",
+    "ejemplo": "Nuestro pipeline de CI/CD sube el código a producción automáticamente tras pasar los tests."
+  },
+  {
+    "palabra": "DevOps",
+    "traduccion": "DevOps",
+    "categoria": "informatica",
+    "definicion": "Combinación de filosofías, prácticas y herramientas que aumentan la capacidad de una organización para entregar aplicaciones rápidamente.",
+    "ejemplo": "El equipo de DevOps optimizó la infraestructura para soportar más tráfico."
+  },
+  {
+    "palabra": "TypeScript",
+    "traduccion": "TypeScript",
+    "categoria": "programacion",
+    "definicion": "Superconjunto de JavaScript que añade tipos estáticos y herramientas avanzadas al lenguaje.",
+    "ejemplo": "TypeScript nos ayuda a detectar errores en tiempo de compilación."
+  },
+  {
+    "palabra": "GraphQL",
+    "traduccion": "GraphQL",
+    "categoria": "programacion",
+    "definicion": "Lenguaje de consulta para APIs que permite a los clientes solicitar exactamente los datos que necesitan.",
+    "ejemplo": "Con GraphQL, evitamos el sobre-envío de datos en nuestras peticiones móviles."
+  },
+  {
+    "palabra": "Serverless",
+    "traduccion": "Serverless",
+    "categoria": "informatica",
+    "definicion": "Modelo de computación en la nube donde el proveedor gestiona la asignación de recursos de máquina automáticamente.",
+    "ejemplo": "Nuestras funciones Lambda se ejecutan en un entorno Serverless."
+  },
+  {
+    "palabra": "Machine Learning",
+    "traduccion": "Machine Learning",
+    "categoria": "informatica",
+    "definicion": "Rama de la inteligencia artificial que permite que los sistemas aprendan y mejoren a partir de la experiencia.",
+    "ejemplo": "El algoritmo de recomendación usa Machine Learning para predecir tus gustos."
+  },
+  {
+    "palabra": "Inteligencia Artificial",
+    "traduccion": "Artificial Intelligence",
+    "categoria": "informatica",
+    "definicion": "Simulación de procesos de inteligencia humana por parte de máquinas, especialmente sistemas informáticos.",
+    "ejemplo": "La Inteligencia Artificial está transformando la forma en que escribimos código."
+  },
+  {
+    "palabra": "Edge Computing",
+    "traduccion": "Edge Computing",
+    "categoria": "informatica",
+    "definicion": "Procesamiento de datos que ocurre cerca de la fuente de los mismos, en lugar de en una nube centralizada.",
+    "ejemplo": "El Edge Computing reduce la latencia en aplicaciones críticas de IoT."
+  },
+  {
+    "palabra": "Big Data",
+    "traduccion": "Big Data",
+    "categoria": "informatica",
+    "definicion": "Conjuntos de datos extremadamente grandes y complejos que requieren herramientas especializadas para su análisis.",
+    "ejemplo": "Analizamos el Big Data del tráfico para optimizar las rutas de transporte."
+  },
+  {
+    "palabra": "Diseño Responsivo",
+    "traduccion": "Responsive Design",
+    "categoria": "informatica",
+    "definicion": "Enfoque de diseño web que hace que las páginas se visualicen correctamente en todos los dispositivos y tamaños de pantalla.",
+    "ejemplo": "El diseño responsivo asegura que el glosario se vea bien tanto en PC como en móvil."
+  },
+  {
+    "palabra": "Frontend",
+    "traduccion": "Frontend",
+    "categoria": "programacion",
+    "definicion": "Parte de una aplicación o sitio web con la que el usuario interactúa directamente.",
+    "ejemplo": "El desarrollador Frontend mejoró la interfaz usando React."
+  },
+  {
+    "palabra": "Backend",
+    "traduccion": "Backend",
+    "categoria": "programacion",
+    "definicion": "Parte de una aplicación encargada de la lógica del servidor, base de datos y autenticación.",
+    "ejemplo": "El Backend gestiona las peticiones de los usuarios y devuelve los resultados."
+  },
+  {
+    "palabra": "Full Stack",
+    "traduccion": "Full Stack",
+    "categoria": "programacion",
+    "definicion": "Desarrollador capaz de trabajar tanto en el Frontend como en el Backend de una aplicación.",
+    "ejemplo": "Como desarrollador Full Stack, puedo crear la interfaz y también la lógica del servidor."
   }
 ]

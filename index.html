@@ -1,111 +1,204 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <title>Diccionario Técnico de TSDS</title>
-  <meta name="description" content="Diccionario técnico colaborativo con definiciones claras, ejemplos y traducciones sobre programación, informática y arquitectura.">
+  <meta name="description"
+    content="Diccionario técnico colaborativo con definiciones claras, ejemplos y traducciones sobre programación, informática y arquitectura.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Inter:wght@400;500;700&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-<script>
-</script>
+  <link rel="stylesheet" href="games.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#4f46e5">
 </head>
-<body>
 
+<body class="light-mode">
 
-  <!-- ℹ️ Botón de presentación -->
-  <div class="boton-presentacion-container">
-    <button id="boton-presentacion" class="boton-presentacion">ℹ️ Presentación</button>
+  <!-- 🌓 Control de Modo -->
+  <div class="controles-flotantes-top">
+    <button id="boton-tema" class="boton-circular" title="Cambiar tema">🌓</button>
+    <button id="boton-presentacion" class="boton-circular" title="Información">ℹ️</button>
   </div>
 
   <!-- 📜 Presentación lateral -->
-  <div id="contenido-presentacion" class="presentacion-lateral oculto">
-    <p>
-      Este sitio web es un proyecto colaborativo desarrollado por estudiantes del primer año de la Tecnicatura en Desarrollo de Software del Instituto ISFD, ubicado en San Miguel, Corrientes. En el año 2025.
-      Su propósito es reunir y presentar términos técnicos vinculados a la informática, la programación y la arquitectura, con definiciones claras, ejemplos prácticos y traducciones al inglés.
-    </p>
-  </div>
+  <aside id="contenido-presentacion" class="presentacion-lateral oculto">
+    <div class="presentacion-content">
+      <h3>Sobre el proyecto</h3>
+      <p>
+        Este sitio web es un proyecto colaborativo desarrollado por estudiantes del primer año de la <strong>Tecnicatura
+          en Desarrollo de Software</strong> del Instituto ISFD, ubicado en San Miguel, Corrientes. (Año 2025).
+      </p>
+      <p>
+        Su propósito es reunir términos técnicos vinculados a la informática, programación y arquitectura, con
+        definiciones claras y traducciones.
+      </p>
+      <button id="cerrar-presentacion" class="boton-simple">Cerrar</button>
+    </div>
+  </aside>
 
   <!-- 🏛️ Encabezado institucional -->
   <header class="encabezado-institucional">
-    <div class="titulo-izquierda">
-   <h1 class="titulo-animado">Diccionario Técnico</h1>
-      <p class="subtitulo">Proyecto académico de la Tecnicatura Superior en Desarrollo de Software</p>
-    </div>
-    <div class="escudo-derecha">
-      <img src="LOGO.png" alt="Escudo del Instituto">
+    <div class="contenedor-header">
+      <div class="titulo-izquierda">
+        <h1 class="titulo-animado">Diccionario<span>Técnico</span></h1>
+        <p class="subtitulo">Tecnicatura Superior en Desarrollo de Software</p>
+      </div>
+      <div class="escudo-derecha">
+        <img src="LOGO.png" alt="Escudo del Instituto" class="escudo-logo">
+      </div>
     </div>
   </header>
 
-  <!-- 📘 Sección de navegación -->
-  <section class="instrucciones">
-    <h2>Explorá el diccionario</h2>
-    <p>Elegí una categoría para comenzar:</p>
+  <main>
+    <!-- 📘 Sección de navegación -->
+    <section class="seccion-principal">
+      <div class="instrucciones">
+        <h2>Explorá el glosario</h2>
+        <p>Elegí una categoría o buscá un término específico:</p>
 
-    <div class="botones-categorias">
-      <button class="codepen-button arquitectura boton-categoria" onclick="filtrarCategoria('arquitectura')">
-        <span>🖥️ Arquitectura</span>
-      </button>
-      <button class="codepen-button informatica boton-categoria" onclick="filtrarCategoria('informatica')">
-        <span>🧑‍💻 Informática</span>
-      </button>
-      <button class="codepen-button programacion boton-categoria" onclick="filtrarCategoria('programacion')">
-        <span>🧠 Programación</span>
-      </button>
-    </div>
+        <div class="botones-categorias">
+          <button class="boton-premium arquitectura" data-categoria="arquitectura">
+            <span class="icon">🖥️</span>
+            <span class="label">Arquitectura</span>
+          </button>
+          <button class="boton-premium informatica" data-categoria="informatica">
+            <span class="icon">🧑‍💻</span>
+            <span class="label">Informática</span>
+          </button>
+          <button class="boton-premium programacion" data-categoria="programacion">
+            <span class="icon">🧠</span>
+            <span class="label">Programación</span>
+          </button>
+        </div>
 
-    <div class="codepen-input buscar">
-      <input type="text" id="buscador" placeholder="Buscar palabra en español o ingles...">
-    </div>
+        <div class="contenedor-buscador">
+          <div class="buscador-wrapper">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="buscador" placeholder="Buscar palabra en español o inglés..."
+              aria-label="Buscador de términos">
+            <button id="boton-limpiar" class="boton-limpiar oculto" title="Limpiar búsqueda">✕</button>
+          </div>
+          <div id="historial-busqueda" class="historial-busqueda"></div>
+          <ul id="sugerencias" class="sugerencias-lista"></ul>
+        </div>
 
-    <ul id="sugerencias" class="sugerencias-lista"></ul>
-    <div id="bienvenida">
-      <p class="frase-poetica">Bienvenido al monte de las palabras.</p>
-    </div>
-    <div id="resultado"></div>
-    <div id="contador-palabras" class="contador-palabras"></div>
-  </section>
+        <div id="index-alfabetico" class="index-alfabetico"></div>
+      </div>
 
-  <!-- 🧠 Secciones institucionales -->
-   <div class="secciones-enlinea">
-  <section class="equipo-desarrollador">
-    <h2>Equipo desarrollador</h2>
-    <p>Este diccionario fue realizado por alumnos del primer año de la Tecnicatura Superior en Desarrollo de Software del Instituto ISFD, como parte de una práctica integradora en ingles que combina diseño web, programación y documentación técnica.</p>
+      <div id="status-carga" class="status-carga"></div>
 
-    <div class="apk-section">
-      <p>🌟 Para una experiencia más profunda, podés instalar la versión mobile del glosario:</p>
-      <a href="https://github.com/cibernau21-cpu/Palabras-Tecnicas/releases/download/v1.9.0/glosario_V1.9.0.apk" download class="apk-link">🐊 Instalar la App del Glosario</a>
-    </div>
-  </section>
+      <div id="bienvenida" class="contedor-dinamico">
+        <div class="hero-content">
+          <p class="frase-poetica">Bienvenido al monte de las palabras.</p>
+        </div>
+      </div>
 
+      <div id="resultado" class="contedor-dinamico"></div>
 
-    <section class="ultima-actualizacion">
-      <h2>Última actualización</h2>
-      <p><span id="fecha-actualizacion"></span></p>
-    </section>
-  </div>
+      <div id="contador-container" class="contador-container">
+        <div id="contador-palabras" class="contador-palabras"></div>
+      </div>
+      <!-- 🎮 Zona de Juegos (Gamificación) -->
+      <section id="zona-juegos" class="seccion-principal zona-juegos">
+        <div class="contenedor-header">
+          <h2 class="titulo-animado">Game <span>Zone</span> 🕹️</h2>
+          <p class="subtitulo">Desafía tus conocimientos técnicos</p>
+        </div>
+
+        <div id="hub-juegos" class="hub-juegos">
+          <div class="tarjeta-juego" onclick="iniciarJuego('hangman')">
+            <div class="juego-icon">😵</div>
+            <h3>Ahorcado Técnico</h3>
+            <p>Adivina el término oculto letra por letra.</p>
+            <button class="boton-premium">Jugar Ahora</button>
+          </div>
+          <div class="tarjeta-juego" onclick="iniciarJuego('trivia')">
+            <div class="juego-icon">🧠</div>
+            <h3>Trivia Pro</h3>
+            <p>Elige la traducción correcta en tiempo récord.</p>
+            <button class="boton-premium">Aceptar Desafío</button>
+          </div>
+        </div>
+
+        <!-- Área de Juego Activa -->
+        <div id="pantalla-juego" class="pantalla-juego oculto">
+          <div class="cabecera-juego">
+            <button class="boton-volver-hub" onclick="volverAlHub()">
+              <span class="icon">🔙</span> Salir al Menú
+            </button>
+            <div class="stats-container">
+              <div class="combo-badge">COMBO X3! 🔥</div>
+              <div id="marcador-puntos" class="marcador-puntos">Puntos: 0</div>
+            </div>
+          </div>
+          <div id="contenido-juego" class="contenido-juego">
+            <!-- El juego se renderiza aquí dinámicamente -->
+          </div>
+        </div>
+      </section>
+
+      <!-- 🧠 Secciones institucionales -->
+      <div class="secciones-grid">
+        <section class="tarjeta-info equipo-desarrollador">
+          <h3>Equipo Desarrollador</h3>
+          <p>Realizado por alumnos del primer año del ISFD como parte de una práctica integradora que combina diseño,
+            programación y documentación técnica.</p>
+
+          <div class="apk-card">
+            <div class="apk-info">
+              <span class="apk-icon">📱</span>
+              <p>Descargá la versión mobile para Android</p>
+            </div>
+            <a href="https://github.com/cibernau21-cpu/Palabras-Tecnicas/releases/download/v1.9.0/glosario_V1.9.0.apk"
+              download class="boton-apk">
+              <span>🐊</span> Instalar App
+            </a>
+          </div>
+        </section>
+
+        <section class="tarjeta-info ultima-actualizacion">
+          <h3>Información del Sistema</h3>
+          <p id="fecha-actualizacion" class="loading-text">Cargando versión...</p>
+        </section>
+      </div>
+
+  </main>
+
+  <!-- 🍞 Toast Notification -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- 🔝 Botón Volver Arriba -->
+  <button id="scroll-top" class="boton-top oculto" title="Volver arriba">
+    <span>↑</span>
+  </button>
 
   <!-- 🧾 Pie institucional -->
   <footer class="pie-institucional">
-    <p>Instituto ISFD · San Miguel, Corrientes</p>
-    <p>Licencia MIT · Proyecto educativo sin fines de lucro</p>
+    <div class="footer-content">
+      <p>Instituto ISFD · San Miguel, Corrientes</p>
+      <div class="footer-links">
+        <span>Licencia MIT</span>
+        <span class="separador">•</span>
+        <span>Proyecto Educativo</span>
+      </div>
+    </div>
   </footer>
 
-  <!-- 🪶 Script principal -->
-  <script src="script.js"></script>
+  <!-- 🔙 Botón Volver -->
+  <button id="boton-volver" class="boton-flotante-volver oculto" title="Volver al inicio">
+    <span class="icon">🔙</span>
+    <span class="text">Inicio</span>
+  </button>
 
-  <!-- 🪶 Script para mostrar versión -->
-  <script>
-    fetch('version.json')
-      .then(res => res.json())
-      .then(data => {
-        const cantidad = typeof palabrasFiltradas !== 'undefined' ? palabrasFiltradas.length : '...';
-        document.getElementById('fecha-actualizacion').textContent =
-          `Versión ${data.version} · Actualizado el ${data.fecha} · 🐊 ${cantidad} palabras activas`;
-      })
-      .catch(() => {
-        document.getElementById('fecha-actualizacion').textContent = 'Versión desconocida';
-      });
-  </script>
-  <button id="boton-volver" class="boton-volver oculto">🔙 Volver al inicio</button>
+  <!-- Scripts -->
+  <script src="script.js"></script>
 </body>
+
 </html>
